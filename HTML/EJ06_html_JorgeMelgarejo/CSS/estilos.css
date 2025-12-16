@@ -1,0 +1,131 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(227, 255, 250);
+}
+
+header{
+    background-color: #53b4a2;
+    padding: 20px;
+    position: fixed;
+    width: 98%;
+}
+
+header ul{
+    list-style: none;
+    display: flex;
+    justify-content: right;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header ul li{
+    margin-left: 30px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+header img{
+    width: 150px;
+    height: auto;
+    float: left;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+main{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 400px;
+    height: 600px;
+    background-color: rgb(142, 211, 160);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+    transition: transform 0.3s;
+}
+
+.card:hover{
+    transform: scale(1.03);
+    transition: 0.3s ease-in-out;
+}
+
+.card h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #d9ffe3;
+}
+
+.card p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    margin: 20px;
+    color: white;
+}
+
+.card img{
+    width: 100%;
+    height: 64%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+button{
+    background-color: #53b4a2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+}
+
+button a{
+    text-decoration: none;
+    color: white;
+}
+
+button:hover{
+    background-color: #29605a;
+    transition: 0.2s ease-in-out;
+    transform: scale(1.02);
+    width: 110px;
+    height: 40px;
+}
+
+footer{
+    background-color: #53b4a2;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 50px;
+    bottom: 0;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+footer img{
+    margin-top: 10px;
+    width: 200px;
+    height: auto;
+}
+
+footer a{
+    color: #c1fad0;
+    text-decoration: none;
+}
+
+footer a:hover{
+    font-size: 1.05rem;
+    transition: 0.5s ease-in-out;
+    color:#29605a;
+}

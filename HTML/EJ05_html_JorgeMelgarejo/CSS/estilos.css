@@ -1,0 +1,252 @@
+@font-face {
+    font-family: 'BBH Sans Hegarty';
+    src: url('../TIPOS/BBH_Sans_Hegarty/BBHSansHegarty-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bruno Ace';
+    src: url('../TIPOS/Bruno_Ace/BrunoAce-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'lexend Deca';
+    src: url('../TIPOS/Lexend_Deca/LexendDeca-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../TIPOS/Montserrat-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poiret One';
+    src: url('../TIPOS/PoiretOne-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('../TIPOS/Quicksand-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Stint Ultra Expanded';
+    src: url('../TIPOS/Stint_Ultra_Expanded/StintUltraExpanded-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'sulphur Point';
+    src: url('../TIPOS/Sulphur_Point/SulphurPoint-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Urbanist';
+    src: url('../TIPOS/Urbanist/Urbanist-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+#tipo1 {
+    font-family: 'BBH Sans Hegarty';
+}
+
+#tipo2 {
+    font-family: 'Bruno Ace';
+}
+
+#tipo3 {
+    font-family: 'lexend Deca';
+}
+
+#tipo4 {
+    font-family: 'Montserrat';
+}
+
+#tipo5 {
+    font-family: 'Poiret One';
+}
+
+#tipo6 {
+    font-family: 'Quicksand';
+}
+
+#tipo7 {
+    font-family: 'Stint Ultra Expanded';
+}
+
+#tipo8 {
+    font-family: 'sulphur Point';
+}
+
+#tipo9 {
+    font-family: 'Urbanist';
+}
+
+body {
+    background-color: #e3e3f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #011640;
+    padding: 20px 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 100%;
+}
+
+header h1 {
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+nav {
+    text-align: center;
+    margin-top: 30px;
+    color: #FFFFFF;
+}
+
+nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    color: #7f95a8;
+    background-color: rgba(76, 84, 85, 0.1);
+}
+
+.info{
+    margin: 70px;
+    background-color: #011640;
+    height: 400px;
+    float: left;
+    width: 40%;
+    border-radius: 10px;
+}
+
+.info h2{
+      color: #FFFFFF;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.info p{
+    color: #FFFFFF;
+    font-size: 18px;
+    text-align: justify;
+    margin: 20px;
+}
+
+div img {
+    margin-right: 100px;
+    margin-top:50px;
+    width: 30%;
+    border-radius: 50px;
+    float: right;
+}
+
+section {
+    padding: 60px 20px;
+    clear: both;
+}
+
+.cards-background {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #011640;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.section-titulo {
+    text-align: center;
+    color: #ffffff;
+    font-size: 36px;
+    margin: 0 0 24px 0;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.card {
+    background-color: #E83338; 
+    color: #ffffff;
+    padding: 22px;
+    border-radius: 8px;
+    border: 3px rgba(0, 0, 0, 0.08);
+}
+
+.card-p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 14px 0;
+}
+
+
+.card-p::first-letter {
+    float: left;
+    font-size: 48px; 
+    line-height: 1;
+    padding-right: 8px;
+    padding-top: 2px; 
+}
+
+.card-personaje {
+    font-weight: 400;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.card img {
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+footer {
+    background-color: #011640;
+    padding: 20px 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+    color: #FFFFFF;
+}
