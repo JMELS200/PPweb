@@ -26,54 +26,53 @@
             <button id="copiar"></button>
             <button id="pegar"></button>
             <button id="cortar"></button>
+
+            <!-- Botón clave -->
+            <button id="aplicarCambios"></button>
         </div>
     </section>
 
-    
-    <nav class="herramientas">
+    <main id="main">
+        <nav class="herramientas">
+            <!-- Fuente y tamaño -->
+            <select id="fuente">
+                <option value="Arial">Arial</option>
+                <option value="Tahoma">Tahoma</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Courier New">Courier New</option>
+            </select>
 
-        <!-- Fuente y tamaño -->
-        <select id="fuente">
-            <option value="Arial">Arial</option>
-            <option value="Tahoma">Tahoma</option>
-            <option value="Georgia">Georgia</option>
-            <option value="Courier New">Courier New</option>
-        </select>
+            <select id="tamano">
+                <option value="2">Pequeño</option>
+                <option value="3" selected>Normal</option>
+                <option value="4">Grande</option>
+                <option value="5">Muy grande</option>
+            </select>
 
-        <select id="tamano">
-            <option value="2">Pequeño</option>
-            <option value="3" selected>Normal</option>
-            <option value="4">Grande</option>
-            <option value="5">Muy grande</option>
-        </select>
+            <input type="color" id="colorTexto" title="Color del texto" value="#000000">
 
-        <input type="color" id="colorTexto" title="Color del texto" value="#000000">
+            <!-- Botones de formato -->
+            <button id="negrita"></button>
+            <button id="cursiva"></button>
+            <button id="subrayado"></button>
+            <button id="tachado"></button>
 
-        <!-- Botones de formato -->
-        <button id="negrita"></button>
-        <button id="cursiva"></button>
-        <button id="subrayado"></button>
-        <button id="tachado"></button>
+            <!-- Alineación -->
+            <button id="alinearIzq"></button>
+            <button id="alinearCentro"></button>
+            <button id="alinearDer"></button>
 
-        <!-- Alineación -->
-        <button id="alinearIzq"></button>
-        <button id="alinearCentro"></button>
-        <button id="alinearDer"></button>
+            <!-- Listas -->
+            <button id="listado"></button>
+            <button id="numerado"></button>
+        </nav>
 
-        <!-- Listas -->
-        <button id="listado"></button>
-        <button id="numerado"></button>
+        <!-- EDITOR VISUAL -->
+        <div id="editorVisual" contenteditable="true" class="editor" placeholder="Escribe tu documento aquí..."></div>
 
-        <!-- Botón clave -->
-        <button id="aplicarCambios"></button>
-    </nav>
-
-    <!-- EDITOR VISUAL -->
-    <div id="editorVisual" contenteditable="true" class="editor"
-         placeholder="Escribe tu documento aquí..."></div>
-
-    <!-- TEXTAREA -->
-    <textarea id="areatexto" style="display:none"></textarea>
-
+        <!-- TEXTAREA -->
+        <textarea id="areatexto"></textarea>
+    </main>
 </body>
+
 </html>

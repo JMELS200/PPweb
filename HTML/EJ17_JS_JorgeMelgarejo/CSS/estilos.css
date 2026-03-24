@@ -18,7 +18,21 @@ body {
     justify-content: space-between;
     background: linear-gradient(135deg, #7aa8ff, #5d8df5);
     padding: 10px 16px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .menu {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .opciones {
+        grid-column: 1 / 4;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+    }
 }
 
 .dark-mode .menu {
@@ -27,7 +41,9 @@ body {
 
 #status {
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 12pt;
+    width: 300px;
+    margin-left: 50px;
 }
 
 .herramientas {
@@ -40,12 +56,47 @@ body {
     padding: 12px;
     margin: 20px auto;
     width: 60%;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+     main {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px;
+    }
+    .herramientas {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 60px;
+        min-height: 80vh;
+        padding: 10px 5px;
+        gap: 12px;
+        position: sticky;
+        top: 10px;
+    }
+
+    .herramientas #fuente {
+        width: 90%;
+    }
+
+    .herramientas #tamano {
+        width: 90%;
+    }
+}
+
+#areatexto {
+    display: none;
 }
 
 .dark-mode .herramientas {
     background: #1b2333;
-    box-shadow: 0 3px 10px rgba(255,255,255,0.05);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.05);
 }
 
 button,
@@ -132,7 +183,7 @@ button::after {
     overflow-wrap: break-word;
     outline: none;
     overflow-y: auto;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -140,7 +191,7 @@ button::after {
     background-color: #1e2430;
     color: #f0f4ff;
     border-color: #4567a1;
-    box-shadow: 0 4px 12px rgba(255,255,255,0.05);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
 }
 
 
@@ -153,6 +204,71 @@ button::after {
     color: #6f7a8f;
 }
 
+
+
+.dark-mode #abrir {
+    background-image: url(../IMG/abredocumento_blanco.svg);
+}
+
+.dark-mode #guardar {
+    background-image: url(../IMG/guardar_blanco.svg);
+}
+
+.dark-mode #temaclarooscuro {
+    background-image: url(../IMG/oscuro.svg);
+}
+
+.dark-mode #copiar {
+    background-image: url(../IMG/copy_blanco.svg);
+}
+
+.dark-mode #pegar {
+    background-image: url(../IMG/paste_blanco.svg);
+}
+
+.dark-mode #cortar {
+    background-image: url(../IMG/cortar_blanco.svg);
+}
+
+.dark-mode #negrita {
+    background-image: url(../IMG/Negrita_blanco.svg);
+}
+
+.dark-mode #cursiva {
+    background-image: url(../IMG/cursiva_blanco.svg);
+}
+
+.dark-mode #subrayado {
+    background-image: url(../IMG/subrayado_blanco.svg);
+}
+
+.dark-mode #tachado {
+    background-image: url(../IMG/tachado_blanco.svg);
+}
+
+.dark-mode #alinearIzq {
+    background-image: url(../IMG/Alinear_blanco.svg);
+}
+
+.dark-mode #alinearCentro {
+    background-image: url(../IMG/alineacentro_blanco.svg);
+}
+
+.dark-mode #alinearDer {
+    background-image: url(../IMG/alineaderecha_blanco.svg);
+}
+
+.dark-mode #listado {
+    background-image: url(../IMG/lista_blanco.svg);
+}
+
+.dark-mode #numerado {
+    background-image: url(../IMG/listaordenada_blanco.svg);
+}
+
+.dark-mode #aplicarCambios {
+    background-image: url(../IMG/aplicar_blanco.svg);
+}
 
 #insertar {
     display: none;
