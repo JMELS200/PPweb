@@ -1,0 +1,223 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", Arial, sans-serif;
+    background: #e9eef5;
+    color: #1b2028;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode {
+    background: #0f1116;
+    color: #e8ecf4;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #7aa8ff, #5d8df5);
+    padding: 10px 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.dark-mode .menu {
+    background: linear-gradient(135deg, #1f2a3d, #162033);
+}
+
+#status {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.herramientas {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 12px;
+    margin: 20px auto;
+    width: 60%;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.dark-mode .herramientas {
+    background: #1b2333;
+    box-shadow: 0 3px 10px rgba(255,255,255,0.05);
+}
+
+button,
+select {
+    background-color: #dce6ff;
+    color: #1a1a1a;
+    border: 1px solid #7d9eda;
+    border-radius: 6px;
+    cursor: pointer;
+    height: 38px;
+    padding: 0 10px;
+    font-size: 0.9rem;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover,
+select:hover {
+    background-color: #bcd1ff;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.dark-mode button,
+.dark-mode select {
+    background-color: #2b3650;
+    color: #f0f4ff;
+    border-color: #4a5f82;
+}
+
+.dark-mode button:hover,
+.dark-mode select:hover {
+    background-color: #3a496e;
+}
+
+button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px 20px;
+    color: transparent;
+    text-shadow: none;
+    position: relative;
+}
+
+button::after {
+    content: attr(title);
+    color: #1a1a1a;
+    font-size: 0.7rem;
+    position: absolute;
+    margin-top: 40px;
+    width: 80px;
+    left: -20px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.dark-mode button::after {
+    color: #e8ecf4;
+}
+
+.herramientas button,
+.opciones button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+}
+
+#editorVisual {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 60%;
+    max-width: 980px;
+    min-height: 520px;
+    padding: 20px;
+    font-size: 17px;
+    line-height: 1.7;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #1b1b1b;
+    border: 1px solid #7aa1d5;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    outline: none;
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode #editorVisual {
+    background-color: #1e2430;
+    color: #f0f4ff;
+    border-color: #4567a1;
+    box-shadow: 0 4px 12px rgba(255,255,255,0.05);
+}
+
+
+#editorVisual:empty:before {
+    content: attr(placeholder);
+    color: #a1a1a1;
+}
+
+.dark-mode #editorVisual:empty:before {
+    color: #6f7a8f;
+}
+
+
+#insertar {
+    display: none;
+}
+
+#abrir {
+    background-image: url(../IMG/abredocumento.svg);
+}
+
+#guardar {
+    background-image: url(../IMG/guardar.svg);
+}
+
+#temaclarooscuro {
+    background-image: url(../IMG/claro.svg);
+}
+
+#copiar {
+    background-image: url(../IMG/copy.svg);
+}
+
+#pegar {
+    background-image: url(../IMG/paste.svg);
+}
+
+#cortar {
+    background-image: url(../IMG/cortar.svg);
+}
+
+#negrita {
+    background-image: url(../IMG/Negrita.svg);
+}
+
+#cursiva {
+    background-image: url(../IMG/cursiva.svg);
+}
+
+#subrayado {
+    background-image: url(../IMG/subrayado.svg);
+}
+
+#tachado {
+    background-image: url(../IMG/tachado.svg);
+}
+
+#alinearIzq {
+    background-image: url(../IMG/Alinear.svg);
+}
+
+#alinearCentro {
+    background-image: url(../IMG/alineacentro.svg);
+}
+
+#alinearDer {
+    background-image: url(../IMG/alineaderecha.svg);
+}
+
+#listado {
+    background-image: url(../IMG/lista.svg);
+}
+
+#numerado {
+    background-image: url(../IMG/listaordenada.svg);
+}
+
+#aplicarCambios {
+    background-image: url(../IMG/aplicar.svg);
+}

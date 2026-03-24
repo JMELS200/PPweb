@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de texto</title>
+    <link rel="stylesheet" href="CSS/estilos.css">
+    <script src="JS/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <section class="menu">
+        <h2>MYDOCS</h2>
+        <div id="status">Documento.txt (Guardado)</div>
+
+        <!-- Input para abrir archivos -->
+        <input type="file" id="insertar" accept=".txt" style="display:none">
+
+        <div class="opciones">
+            <button id="abrir"></button>
+            <button id="guardar"></button>
+            <button id="temaclarooscuro"></button>
+            <button id="copiar"></button>
+            <button id="pegar"></button>
+            <button id="cortar"></button>
+        </div>
+    </section>
+
+    
+    <nav class="herramientas">
+
+        <!-- Fuente y tamaño -->
+        <select id="fuente">
+            <option value="Arial">Arial</option>
+            <option value="Tahoma">Tahoma</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Courier New">Courier New</option>
+        </select>
+
+        <select id="tamano">
+            <option value="2">Pequeño</option>
+            <option value="3" selected>Normal</option>
+            <option value="4">Grande</option>
+            <option value="5">Muy grande</option>
+        </select>
+
+        <input type="color" id="colorTexto" title="Color del texto" value="#000000">
+
+        <!-- Botones de formato -->
+        <button id="negrita"></button>
+        <button id="cursiva"></button>
+        <button id="subrayado"></button>
+        <button id="tachado"></button>
+
+        <!-- Alineación -->
+        <button id="alinearIzq"></button>
+        <button id="alinearCentro"></button>
+        <button id="alinearDer"></button>
+
+        <!-- Listas -->
+        <button id="listado"></button>
+        <button id="numerado"></button>
+
+        <!-- Botón clave -->
+        <button id="aplicarCambios"></button>
+    </nav>
+
+    <!-- EDITOR VISUAL -->
+    <div id="editorVisual" contenteditable="true" class="editor"
+         placeholder="Escribe tu documento aquí..."></div>
+
+    <!-- TEXTAREA -->
+    <textarea id="areatexto" style="display:none"></textarea>
+
+</body>
+</html>
