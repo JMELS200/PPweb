@@ -1,0 +1,787 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", "Inter", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e, #16213e 50%, #0f3460);
+    overflow: hidden;
+}
+
+/* ============================================================
+   BARRA SUPERIOR (Archivo + Estilo)
+============================================================ */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.toolbar-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.section-title {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+/* ============================================================
+   BOTONES DE HERRAMIENTAS
+============================================================ */
+.tool-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.tool-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+/* Efecto brillo al pasar el ratón */
+.tool-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    left: -100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.tool-btn:hover::before {
+    left: 100%;
+}
+
+.tool-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón activo */
+.tool-btn.active {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    animation: pulse 2s infinite;
+}
+
+/* Iconos */
+.tool-btn img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+}
+
+.tool-btn:hover img {
+    transform: scale(1.15) rotate(5deg);
+}
+
+/* Iconos alternativos */
+.icon-white {
+    display: block;
+}
+
+.icon-black {
+    display: none;
+}
+
+.tool-btn span {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 10px;
+    font-weight: 500;
+}
+
+/* ============================================================
+   BARRA LATERAL IZQUIERDA (Herramientas)
+============================================================ */
+.toolbar-vertical {
+    position: absolute;
+    left: 0;
+    top: 80px;
+    width: 70px;
+    height: calc(100vh - 80px);
+    background: rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 150px;
+    margin-top: 7px;
+    z-index: 9999;
+}
+
+.tool-buttons-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+}
+
+.toolbar-vertical .tool-btn {
+    width: 50px;
+    height: 50px;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.toolbar-vertical .tool-btn span {
+    display: none;
+}
+
+/* ============================================================
+   DESPLEGABLE DE FORMAS
+============================================================ */
+.tool-dropdown {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dropdown-menu {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+    width: 100%;
+    align-items: center;
+}
+
+.tool-dropdown.open .dropdown-menu {
+    display: flex;
+}
+
+/* ============================================================
+   PANEL DE CAPAS (DERECHA)
+============================================================ */
+.layers-panel {
+    position: absolute;
+    right: 0;
+    top: 80px;
+    width: 160px;
+    height: calc(100vh - 100px);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 9999;
+    overflow-y: auto;
+    margin-top: 7px;
+}
+
+.layers-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.layers-panel::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+
+.layers-panel h3 {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.layer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.add-layer-btn {
+    width: 100%;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.layer span {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.layer-opacity {
+    width: 100%;
+}
+
+.layer-visible {
+    transform: scale(1.2);
+}
+
+.layer-thumbnail {
+    width: 100%;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    background-size: cover;
+    background-position: center;
+}
+
+.delete-layer-btn {
+    padding: 6px;
+    background: rgba(255, 0, 0, 0.25);
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+body.light .layers-panel {
+    background: rgba(0, 0, 0, 0.05);
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    color: #111;
+}
+
+body.light .layers-panel h3 {
+    color: #111;
+    opacity: 0.8;
+}
+
+body.light .layer {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+body.light .layer span {
+    color: #111;
+    opacity: 0.9;
+}
+
+body.light .layer-thumbnail {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+body.light .add-layer-btn {
+    background: rgba(0, 0, 0, 0.15);
+    border-color: rgba(0, 0, 0, 0.25);
+    color: #111;
+}
+
+body.light .delete-layer-btn {
+    background: rgba(255, 0, 0, 0.2);
+    border-color: rgba(255, 0, 0, 0.4);
+    color: #111;
+}
+
+body.light .layer.activa {
+    outline: 2px solid #764ba2;
+    background: rgba(118, 75, 162, 0.25);
+}
+
+/* ============================================================
+   CONTROLES DE ESTILO (Color, Grosor, Opacidad, Relleno)
+============================================================ */
+.style-controls,
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.control-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.control-icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+/* Selector de color */
+input[type="color"] {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: transparent;
+    transition: 0.3s;
+}
+
+input[type="color"]:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+}
+
+/* Sliders */
+input[type="range"] {
+    width: 100px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.5);
+    transition: 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.7);
+}
+
+/* Valor numérico */
+.value-display {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+/* Switch ON/OFF */
+.switch {
+    position: relative;
+    width: 48px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 26px;
+    transition: 0.4s;
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked+.slider {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+input:checked+.slider:before {
+    transform: translateX(22px);
+}
+
+/* ============================================================
+   CANVAS Y CONTENEDOR
+============================================================ */
+.canvas-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+
+.canvas-container::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    width: 940px;
+    height: 640px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+/* Canvas */
+canvas {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 0 100px rgba(0, 0, 0, 0.03);
+    cursor: crosshair;
+    transition: 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+canvas:hover {
+    transform: scale(1.005);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.15),
+        inset 0 0 100px rgba(0, 0, 0, 0.03);
+}
+
+body.light {
+    background: linear-gradient(135deg, #f0f0f0, #ffffff 50%, #e6e6e6);
+    color: #111;
+}
+
+body.light .section-title,
+body.light .tool-btn span,
+body.light .value-display {
+    color: #111;
+}
+
+body.light .tool-btn img,
+body.light .control-icon {
+    filter: invert(1);
+}
+
+body.light .toolbar,
+body.light .toolbar-vertical {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+body.light input[type="range"] {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+body.light input[type="range"]::-webkit-slider-thumb {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.light input[type="color"]::-webkit-color-swatch {
+    border: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+body.light .control-group label {
+    color: #111 !important;
+}
+
+body,
+.toolbar,
+.toolbar-vertical,
+.tool-btn,
+.control-group label,
+.value-display,
+
+canvas {
+    transition:
+        background 0.4s ease,
+        color 0.4s ease,
+        filter 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+/* Animación del cambio de tema */
+body.tema-anim {
+    animation: temaFade 0.4s ease;
+}
+
+@keyframes temaFade {
+    from {
+        opacity: 0.6;
+        filter: blur(3px);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* ============================================================
+   ANIMACIONES GENERALES
+============================================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 4px 25px rgba(102, 126, 234, 0.7);
+    }
+}
+
+/* ============================================================
+   RESPONSIVE MÓVIL / TABLET
+============================================================ */
+@media (max-width: 900px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* ============================================================
+       1. BARRA DE ESTILOS
+    ============================================================ */
+    .toolbar {
+        order: 1;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(0, 0, 0, 0.35);
+    }
+
+    .section-title {
+        display: none;
+    }
+
+    .tool-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .tool-btn span {
+        display: none;
+    }
+
+    /* ============================================================
+       2. CANVAS
+    ============================================================ */
+    .canvas-container {
+        order: 2;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    .canvas-container::before {
+        display: none;
+    }
+
+    canvas {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: calc(100vh - 260px);
+        border-radius: 6px;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* ============================================================
+       3. BARRA DE HERRAMIENTAS
+    ============================================================ */
+    .tool-dropdown {
+        flex-direction: row !important;
+        width: auto !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .toolbar-vertical {
+        all: unset;
+        display: flex;
+        order: 3;
+        width: 100%;
+        padding: 12px 0;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        background: rgba(0, 0, 0, 0.25);
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        box-sizing: border-box;
+    }
+
+    .tool-buttons-vertical {
+        all: unset;
+        display: flex;
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .toolbar-vertical .tool-btn {
+        width: 48px;
+        height: 48px;
+        padding: 6px;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.25);
+    }
+
+    .dropdown-menu {
+        display: none !important;
+        flex-direction: row !important;
+        width: auto !important;
+        gap: 8px !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(6px);
+        z-index: 9999;
+    }
+
+    .tool-dropdown.open .dropdown-menu {
+        display: flex !important;
+    }
+
+    .dropdown-menu .tool-btn {
+        width: 40px !important;
+        height: 40px !important;
+        padding: 4px !important;
+    }
+
+    .style-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .layers-panel {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 140px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(12px);
+        border-left: 1px solid rgba(255, 255, 255, 0.25);
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow-y: auto;
+        z-index: 99999;
+    }
+
+    .layers-panel h3 {
+        font-size: 13px;
+        text-align: center;
+        margin-bottom: 5px;
+        color: white;
+    }
+
+    .layer {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.12);
+        padding: 8px;
+        border-radius: 8px;
+    }
+
+    .layer-thumbnail {
+        width: 100%;
+        height: 60px;
+        border-radius: 6px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .layer span {
+        font-size: 11px;
+        color: white;
+    }
+
+    .layer-opacity {
+        width: 100%;
+    }
+
+    .layer-visible {
+        transform: scale(1.1);
+    }
+
+    .delete-layer-btn {
+        padding: 4px 6px;
+        font-size: 11px;
+    }
+
+    .add-layer-btn {
+        padding: 6px;
+        font-size: 12px;
+    }
+}

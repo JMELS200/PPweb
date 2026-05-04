@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilustra.me</title>
+    <link rel="stylesheet" href="CSS/estilos.css">
+    <script src="JS/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ============================================================
+         BARRA SUPERIOR (Archivo + Estilo)
+    ============================================================ -->
+    <header class="toolbar">
+
+        <!-- =======================
+             SECCIÓN ARCHIVO
+        ======================== -->
+        <div class="toolbar-section">
+            <span class="section-title">Archivo</span>
+
+            <div class="tool-buttons">
+
+                <!-- Guardar PNG -->
+                <button class="tool-btn" id="guardar">
+                    <img src="IMG/GUARDARNEGRO.svg" class="icon-white">
+                    <span>Guardar</span>
+                </button>
+
+                <!-- Abrir archivo -->
+                <button class="tool-btn" id="cargar">
+                    <img src="IMG/ABRIRNEGRO.svg" class="icon-white">
+                    <span>Abrir</span>
+                </button>
+
+                <!-- Deshacer -->
+                <button class="tool-btn" id="deshacer">
+                    <img src="IMG/DESHACERBLANCO.svg" class="icon-white">
+                    <span>Deshacer</span>
+                </button>
+
+                <!-- Rehacer -->
+                <button class="tool-btn" id="rehacer">
+                    <img src="IMG/REHACERBLANCO.svg" class="icon-white">
+                    <span>Rehacer</span>
+                </button>
+
+                <!-- Tema claro/oscuro -->
+                <button class="tool-btn" id="tema">
+                    <img src="IMG/BLANCO.svg" class="icon-white">
+                    <span>Tema</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- =======================
+             SECCIÓN ESTILO
+        ======================== -->
+        <div class="toolbar-section">
+            <span class="section-title">Estilo</span>
+
+            <div class="style-controls">
+
+                <!-- Color -->
+                <div class="control-group">
+                    <label>
+                        <img src="IMG/FORMASNEGRO.svg" class="control-icon">
+                        Color
+                    </label>
+                    <input type="color" id="color" value="#000000">
+                </div>
+
+                <!-- Grosor -->
+                <div class="control-group">
+                    <label>
+                        <img src="IMG/STROKEBLANCO.svg" class="control-icon">
+                        Grosor
+                    </label>
+                    <input type="range" id="grosor" min="1" max="50" value="3">
+                    <span id="grosorValue" class="value-display">3px</span>
+                </div>
+
+                <!-- Opacidad -->
+                <div class="control-group">
+                    <label>
+                        <img src="IMG/OPACIDADNEGRO.svg" class="control-icon">
+                        Opacidad
+                    </label>
+                    <input type="range" id="opacidad" min="0" max="100" value="100">
+                    <span id="opacidadValue" class="value-display">100%</span>
+                </div>
+
+                <!-- Relleno -->
+                <div class="control-group">
+                    <label>
+                        <img src="IMG/FILLBLANCO.svg" class="control-icon">
+                        Relleno
+                    </label>
+
+                    <!-- Switch ON/OFF -->
+                    <label class="switch">
+                        <input type="checkbox" id="fill">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+
+    <!-- ============================================================
+         BARRA LATERAL IZQUIERDA (Herramientas)
+    ============================================================ -->
+    <aside class="toolbar-vertical">
+        <div class="tool-buttons-vertical">
+
+            <!-- Herramienta: Lápiz -->
+            <button class="tool-btn active" data-tool="pencil">
+                <img src="IMG/LAPIZNEGRO.svg" class="icon-white">
+                <span>Lápiz</span>
+            </button>
+
+            <!-- Herramienta: Formas (desplegable) -->
+            <div class="tool-dropdown">
+
+                <!-- Botón principal -->
+                <button class="tool-btn" id="btnFormas">
+                    <img src="IMG/FORMASNEGRO.svg" class="icon-white">
+                    <span>Formas</span>
+                </button>
+
+                <!-- Menú desplegable -->
+                <div class="dropdown-menu">
+
+                    <!-- Cuadrado -->
+                    <button class="tool-btn" data-tool="rect">
+                        <img src="IMG/CUADRADONEGRO.svg" class="icon-white">
+                        <span>Cuadrado</span>
+                    </button>
+
+                    <!-- Círculo -->
+                    <button class="tool-btn" data-tool="circle">
+                        <img src="IMG/CIRCULOBLANCO.svg" class="icon-white">
+                        <span>Círculo</span>
+                    </button>
+
+                    <!-- Triángulo -->
+                    <button class="tool-btn" data-tool="triangle">
+                        <img src="IMG/TRIANGULOBLANCO.svg" class="icon-white">
+                        <span>Triángulo</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pincel -->
+            <button class="tool-btn" data-tool="pincel">
+                <img src="IMG/PINCELNEGRO.svg" class="icon-white">
+                <span>Pincel</span>
+            </button>
+
+            <!-- Flecha -->
+            <button class="tool-btn" data-tool="arrow">
+                <img src="IMG/SUBRAYADOBLANCO.svg" class="icon-white">
+                <img src="IMG/SUBRAYADONEGRO.svg" class="icon-black">
+                <span>Flecha</span>
+            </button>
+
+            <!-- Borrador -->
+            <button class="tool-btn" data-tool="eraser">
+                <img src="IMG/BORRADORBLANCO.svg" class="icon-white">
+                <img src="IMG/BORRADORNEGRO.svg" class="icon-black">
+                <span>Borrador</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ============================================================
+     BARRA DERECHA DE CAPAS
+============================================================ -->
+    <aside class="layers-panel">
+        <h3>Capas</h3>
+        <button id="nuevaCapa" class="add-layer-btn">+ Nueva capa</button>
+        <div id="listaCapas"></div>
+    </aside>
+    <!-- ============================================================
+         ÁREA DE DIBUJO (Canvas)
+    ============================================================ -->
+    <main class="canvas-container">
+        <canvas id="dibujo" width="900" height="600"></canvas>
+    </main>
+
+    <!-- Inputs ocultos para cargar archivos -->
+    <input type="file" id="fileInput" style="display:none">
+    <input type="file" id="imageInput" accept=".png,.jpg,.jpeg,.json" style="display:none">
+
+</body>
+
+</html>
